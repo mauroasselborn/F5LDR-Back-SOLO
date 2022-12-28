@@ -3,7 +3,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 
 // Models
-import { Product, Brand, Category, Product_Sale, Sale } from './database/models/index.js'
+// import { Product, Brand, Category, Product_Sale, Sale } from './database/models/index.js'
 
 import routsProducts from './routes/products.routes.js'
 
