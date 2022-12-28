@@ -2,7 +2,7 @@ import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 
-import rutaProductos from './routes/products.routes.js'
+import routsProducts from './routes/products.routes.js'
 
 const app = express()
 
@@ -12,7 +12,7 @@ app.use(morgan('dev'))
 app.use(cors())
 
 //Uso de rutas
-app.use(rutaProductos)
+app.use(routsProducts)
 
 app.use((req, res) => {
     res.status(404).json({ message: 'Page Not Found' })

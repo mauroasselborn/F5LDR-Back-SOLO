@@ -1,8 +1,8 @@
 import { DataTypes } from 'sequelize'
 import { connection } from '../connect.js'
 
-const modelName = 'Product'
+const modelName = 'Sale'
 const model = {}
 const options = { timestamps: false }
 
-export const Product = connection.define(modelName, model, options)
+export const Sale = connection.define(modelName, model, options)
