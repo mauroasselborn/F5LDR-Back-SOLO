@@ -1,22 +1,23 @@
 import { DataTypes } from 'sequelize'
-import { connection } from '../connect.js'
+import { connection } from '../connection.js'
 
 const modelName = 'Category'
-const options = { timestamps: false }
+const options = { timestamps: true }
 
-export const Category = connection.define(
-    modelName,
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+const model = {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
     },
-    options
-)
-Category.sync({ force: true })
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+}
+
+const Category = connection.define(modelName, model, options)
+
+// await Category.sync({ alter: true })
+
+export default Category

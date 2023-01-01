@@ -1,5 +1,4 @@
-// import { Product } from '../models/Product.js'
-
+import { Product } from '../database/models/index.js'
 //Listar todos los productos
 export const getAllProducts = async (_req, res) => {
     try {
@@ -24,8 +23,8 @@ export const getProduct = async (req, res) => {
 // Crea un producto nuevo
 export const createProduct = async (req, res) => {
     try {
-        const { name, value, stock, stock_min } = req.body
-        const product = await Product.create({ name, value, stock, stock_min })
+        // const { name, value, stock, stock_min } = req.body
+        const product = await Product.bulkCreate(req.body)
         res.status(201).json({ message: 'Product Created', Created_Product: product })
     } catch (error) {
         res.status(400).json({ message: error.message })

@@ -1,23 +1,23 @@
 import { DataTypes } from 'sequelize'
-import { connection } from '../connect.js'
+import { connection } from '../connection.js'
 
 const modelName = 'Sale'
-const options = { timestamps: false }
+const options = { timestamps: true }
 
-export const Sale = connection.define(
-    modelName,
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        amount: {
-            type: DataTypes.DOUBLE,
-            allowNull: false,
-        },
+const model = {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
     },
-    options
-)
+    amount: {
+        type: DataTypes.DOUBLE,
+        allowNull: false,
+    },
+}
 
-Sale.sync({ force: true })
+const Sale = connection.define(modelName, model, options)
+
+// await Sale.sync({ alter: true })
+
+export default Sale

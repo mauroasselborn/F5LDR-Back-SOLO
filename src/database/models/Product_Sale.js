@@ -1,30 +1,37 @@
 import { DataTypes } from 'sequelize'
-import { connection } from '../connect.js'
+import { connection } from '../connection.js'
+import Product from './Product.js'
+import Sale from './Sale.js'
 
 const modelName = 'Product_Sale'
 const options = { timestamps: false }
 
-export const Product_Sale = connection.define(
-    modelName,
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        product_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        sale_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        quantity: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
+const model = {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
     },
-    options
-)
-Product_Sale.sync({ force: true })
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+}
+
+const Product_Sale = connection.define(modelName, model, options)
+
+Product.belongsToMany(Sale, {
+    through: Product_Sale,
+    foreignKey: 'product_id',
+    timestamps: false,
+})
+
+Sale.belongsToMany(Product, {
+    through: Product_Sale,
+    foreignKey: 'sale_id',
+    timestamps: false,
+})
+
+// await Product_Sale.sync({ alter: true })
+
+export default Product_Sale
