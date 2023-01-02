@@ -5,9 +5,9 @@ const router = Router()
 
 // Peticiones http
 router.get('/products', getAllProducts)
-router.get('/products/:id', getProduct)
-router.post('/products', createProduct)
-router.put('/products/:id', updateProduct)
-router.delete('/products/:id', deleteProduct)
+router.get('/product/:id', getProduct)
+router.post('/product', createProduct)
+router.put('/product/:id', updateProduct)
+router.delete('/product/:id', deleteProduct)
 
 export default router

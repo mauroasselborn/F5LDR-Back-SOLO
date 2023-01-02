@@ -1,4 +1,5 @@
 import { Product } from '../database/models/index.js'
+
 //Listar todos los productos
 export const getAllProducts = async (_req, res) => {
     try {
