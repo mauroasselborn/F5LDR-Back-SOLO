@@ -2,7 +2,7 @@ import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 
-import { routsBrands, routsCategories, routsProducts, routsSales } from './routes/index.js'
+import { routsBrands, routsCategories, routsProducts, routsSales } from './routes/index.routes.js'
 
 const app = express()
 

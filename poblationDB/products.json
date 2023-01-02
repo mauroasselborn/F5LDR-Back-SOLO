@@ -1,0 +1,56 @@
+[
+    {
+        "description": "Cerveza Negra",
+        "size": "1000",
+        "value": "300",
+        "stock": "100",
+        "stock_min": "50",
+        "brand_id": "1",
+        "category_id": "1"
+    },
+    {
+        "description": "Cerveza Roja",
+        "size": "1000",
+        "value": "350",
+        "stock": "50",
+        "stock_min": "30",
+        "brand_id": "2",
+        "category_id": "1"
+    },
+    {
+        "description": "Cerveza Golden",
+        "size": "1000",
+        "value": "400",
+        "stock": "40",
+        "stock_min": "20",
+        "brand_id": "4",
+        "category_id": "1"
+    },
+    {
+        "description": "Pancho",
+        "size": "super",
+        "value": "250",
+        "stock": "50",
+        "stock_min": "25",
+        "brand_id": "5",
+        "category_id": "5"
+    },
+    {
+        "description": "Papas Fritas",
+        "size": "250",
+        "value": "150",
+        "stock": "10",
+        "stock_min": "20",
+        "brand_id": "8",
+        "category_id": "2"
+    },
+    {
+        "description": "Gaseosa Cola",
+        "size": "500",
+        "value": "150",
+        "stock": "10",
+        "stock_min": "20",
+        "brand_id": "7",
+        "category_id": "4"
+    }
+]

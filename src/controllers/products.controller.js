@@ -1,10 +1,20 @@
-import { Product } from '../database/models/index.js'
+import { Product, Brand, Category } from '../database/models/index.js'
 
 //Listar todos los productos
 export const getAllProducts = async (_req, res) => {
     try {
-        const products = await Product.findAll()
-        products.length ? res.status(200).json(products) : res.json({ message: 'No Products' })
+        const products = await Product.findAll({
+            include: [{ model: Brand }, { model: Category }],
+        })
+
+        const finalProducts = products.map((product) => {
+            const { description, size, value, stock, stock_min } = product
+            const { description: brand } = product.Brand
+            const { description: category } = product.Category
+            return { description, size, value, stock, stock_min, brand, category }
+        })
+
+        products.length ? res.status(200).json(finalProducts) : res.json({ message: 'No Products' })
     } catch (error) {
         res.status(400).json({ message: error.message })
     }
