@@ -1,0 +1,7 @@
+--------------------  NVM ------------------------
+NVM te permite el correcto manejo de multiples versiones de Node js
+ya que no tenes descrito la versión de Node si trabaras con un equipo 
+podrian haber incongruencias.
+
+Su implementación es realmente muy sencilla te dejo la fuente:
+    https://github.com/nvm-sh/nvm

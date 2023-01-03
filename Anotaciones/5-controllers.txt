@@ -1,0 +1,21 @@
+--------------- Poblar las tablas ----------------
+
+// Create a new Brand
+export const createBrand = async (req, res) => {
+    try {
+        const brand = await Brand.create(req.body)
+        //👆🏼 comentar, 👇🏼 descomentar para hacer la poblacion de la tabla "brads" con multiples objetos por "post"
+        // const brand = await Brand.bulkCreate(req.body)
+
+Estuve viendo que utilizaste esta estrategia para poblar de datos y por ahi vi un 
+archivo que contenia datos json calculo que de test manual, y aca hago un llamado 
+te recomiendo para proyectos escalables te des la oprtunidad de genenrar una buena suite 
+de test que respalde tu comportamiento. 
+
+Una estrategia para no tener que comentar y descomentar las lineas a la hora de poblar los datos
+podria ser hacer un initializer con un Promise all que mediante un helper cargue los registros 
+basicos para el correcto funcionamiento de tu sistema. Este initializer se ejecutaria una 
+vez al iniciar tu server por primera vez.
+
+Exiten bibliotecas que te ayudan con la fake data.
+fuente: https://www.npmjs.com/package/@faker-js/faker

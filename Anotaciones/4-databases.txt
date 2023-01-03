@@ -1,0 +1,13 @@
+------------------- El directorio o archivo databases --------------
+Este debe ir a parte del modelo de entodades mas alla de que esten estrechamente 
+relacionados y parezcan parte de lo mismo deberian encontrarse en directorios 
+distintos. 
+
+    " .......
+    Por ejemplo, podemos sentirnos tentados de pensar que las reglas 
+    de negocio deben poder guardar información directamente en la base de datos. 
+    Como ya hemos visto antes, la base de datos es un detalle, 
+    así que esto deberíamos evitarlo. 
+    En ese punto deberíamos trazar una frontera." ___ Robert C. Martin___
+    fuente: https://www.genbeta.com/desarrollo/principios-de-una-arquitectura-limpia-mantenible-y-testeable
+

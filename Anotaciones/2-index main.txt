@@ -1,0 +1,9 @@
+-------------------  Index / Main ------------------
+
+El index principal se conoce como main en otros lenguajes de
+programación, este solo deberia encargarse de levantar la 
+directiva principal de ejecución: app -> listen()
+
+Las configuraciones por default deberian estar en un archivo 
+config en el cual tambien le indiquemos a dotenv su entorno de 
+ejecución en base a NODE_ENV 
