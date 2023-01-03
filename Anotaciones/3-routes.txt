@@ -1,0 +1,106 @@
+--------------- Routes -------------
+
+El directorio routes contiene todas nuestras rutas agrupadas 
+por entidad para poder aplicar su metodo HTTP acceso. 
+Podrias aplicar tambien dentro de esta carpeta la estrategia de 
+contener un index.js de exportación general.
+
+    ./routes/index.js
+
+        import Brands from './brands.routes'
+        import Categories from './categories.routes'
+        import Products from './products.routes'
+        import Sales from './sales.routes'
+
+
+        export default {
+            Brands,
+            Categories,
+            Products,
+            Sales
+        }
+
+
+ De esta manera la importación en app.js sería asi:
+
+    import Routes from './routes'
+
+    ----
+        //Uso de rutas
+        app.use(Routes.Brands)
+        app.use(Routes.Products)
+        app.use(Routes.Categories)
+        app.use(Routes.Sales)
+    
+    -----
+
+
+
+----------------_____________ Segundo punto _____________ ----------------
+
+En lugar de repetir los path podrias generalizarlo en un middle 
+te dejo este Gist: https://gist.github.com/pmNiko/3d4a01d8ab57bd33a0e39464912b670c
+
+    Ejemplo ./routes/brands.routes.js
+
+    // Peticiones http
+    router.get('/brands', getAllBrands)          ->    router.get('/',    getAllBrands)
+    router.get('/brand/:id', getBrand)           ->    router.get('/:id', getBrand) 
+    router.post('/brand', createBrand)           ->    router.post('/',   createBrand)
+    router.put('/brand/:id', updateBrand)        ->    router.put('/',    updateBrand)
+    router.delete('/brand/:id', deleteBrand)     ->    router.delete('/', deleteBrand)
+
+
+De esta manera podrias trnasladar ese path en comun al middle de app.js
+
+        import Routes from './routes'
+
+        ----
+            //Uso de rutas
+            app.use('/brands',Routes.Brands)
+            app.use(Routes.Products)
+            ------- ----- 
+        
+        -----
+
+Siguiedo este procedimiento podria crease un objeto javascript en el index.js 
+
+        const Paths = {
+            BRANDS: '/api/v1/brands',
+            PRODUCTS: '/api/v1/products',
+            ------
+        }
+
+    Uso en el app.js
+
+        import Routes from './routes'
+
+        ----
+            //Uso de rutas
+            app.use(Paths.BRANDS,Routes.Brands)
+            app.use(Paths.PRODUCTS, Routes.Products)
+            ------- ----- 
+        
+        -----
+
+    Con esto eliminamos la implementación de los magic strings, sin 
+    contar los beneficios a la hora del testing. 
+
+
+
+----------------_____________ Tercer punto _____________ ----------------
+
+    Asi mismo se podria importar el controller de la entidad de la siguiente 
+    manera: 
+
+         Ejemplo ./routes/brands.routes.js
+
+        import { Router } from 'express'
+        import controller from '../controllers/brands.controller.js'
+
+        // Peticiones http
+        router.get('/',    controller.getAllBrands)
+        router.get('/:id', controller.getBrand) 
+        router.post('/',   controller.createBrand)
+        router.put('/',    controller.updateBrand)
+        router.delete('/', controller.deleteBrand)
