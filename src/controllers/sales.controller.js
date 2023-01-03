@@ -1,6 +1,6 @@
-import { Sale } from '../database/models/index.js'
+import { Sale, Product_Sale } from '../database/models/index.js'
 
-//Listar todos las Ventas
+//List all Sales
 export const getAllSales = async (_req, res) => {
     try {
         const sales = await Sale.findAll()
@@ -10,7 +10,7 @@ export const getAllSales = async (_req, res) => {
     }
 }
 
-// Listar una Sale por ID
+// List a Sale by ID
 export const getSale = async (req, res) => {
     try {
         const { id } = req.params
@@ -21,18 +21,19 @@ export const getSale = async (req, res) => {
     }
 }
 
-// Crea una Sale nuevo
+// Create a new Sale  SEGUIR ACA 👇🏼
 export const createSale = async (req, res) => {
     try {
-        // const { name, value, stock, stock_min } = req.body
-        const sale = await Sale.create(req.body)
+        const product_sale = await Product_Sale.bulkCreate(req.body, {
+            include: Product_Sale,
+        })
         res.status(201).json({ message: 'Sale Created', Created_Product: sale })
     } catch (error) {
         res.status(400).json({ message: error.message })
     }
 }
 
-// Actualiza una Sale
+// Update a Sale by ID
 export const updateSale = async (req, res) => {
     try {
         const { id } = req.params
@@ -44,7 +45,7 @@ export const updateSale = async (req, res) => {
     }
 }
 
-// Borra una Sale por ID
+// Delete a Sale by ID
 export const deleteSale = async (req, res) => {
     try {
         const { id } = req.params

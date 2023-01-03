@@ -5,8 +5,8 @@
         "value": "300",
         "stock": "100",
         "stock_min": "50",
-        "brand_id": "1",
-        "category_id": "1"
+        "brand_id": "7",
+        "category_id": "2"
     },
     {
         "description": "Cerveza Roja",
@@ -14,8 +14,8 @@
         "value": "350",
         "stock": "50",
         "stock_min": "30",
-        "brand_id": "2",
-        "category_id": "1"
+        "brand_id": "7",
+        "category_id": "2"
     },
     {
         "description": "Cerveza Golden",
@@ -23,8 +23,8 @@
         "value": "400",
         "stock": "40",
         "stock_min": "20",
-        "brand_id": "4",
-        "category_id": "1"
+        "brand_id": "2",
+        "category_id": "2"
     },
     {
         "description": "Pancho",
@@ -32,8 +32,8 @@
         "value": "250",
         "stock": "50",
         "stock_min": "25",
-        "brand_id": "5",
-        "category_id": "5"
+        "brand_id": "3",
+        "category_id": "1"
     },
     {
         "description": "Papas Fritas",
@@ -41,8 +41,8 @@
         "value": "150",
         "stock": "10",
         "stock_min": "20",
-        "brand_id": "8",
-        "category_id": "2"
+        "brand_id": "6",
+        "category_id": "5"
     },
     {
         "description": "Gaseosa Cola",
@@ -50,7 +50,7 @@
         "value": "150",
         "stock": "10",
         "stock_min": "20",
-        "brand_id": "7",
+        "brand_id": "4",
         "category_id": "4"
     }
 ]

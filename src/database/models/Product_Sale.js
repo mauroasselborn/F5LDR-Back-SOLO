@@ -32,6 +32,4 @@ Sale.belongsToMany(Product, {
     timestamps: false,
 })
 
-// await Product_Sale.sync({ alter: true })
-
 export default Product_Sale

@@ -1,6 +1,6 @@
 import { Category } from '../database/models/index.js'
 
-//Listar todas las Categories
+//List all Categories
 export const getAllCategories = async (_req, res) => {
     try {
         const categories = await Category.findAll()
@@ -10,7 +10,7 @@ export const getAllCategories = async (_req, res) => {
     }
 }
 
-// Listar una Category por ID
+// List a Category by ID
 export const getCategory = async (req, res) => {
     try {
         const { id } = req.params
@@ -21,18 +21,20 @@ export const getCategory = async (req, res) => {
     }
 }
 
-// Crea una Category nueva
+// Create a new Category
 export const createCategory = async (req, res) => {
     try {
-        // const { name, value, stock, stock_min } = req.body
-        const category = await Category.bulkCreate(req.body)
+        const category = await Category.create(req.body)
+        //👆🏼 comentar, 👇🏼 descomentar para hacer la poblacion de la tabla "categories" con multiples objetos por "post"
+        // const category = await Category.bulkCreate(req.body)
+
         res.status(201).json({ message: 'Category Created', Created_Product: category })
     } catch (error) {
         res.status(400).json({ message: error.message })
     }
 }
 
-// Actualiza una Category por ID
+// Update a Category by ID
 export const updateCategory = async (req, res) => {
     try {
         const { id } = req.params
@@ -44,7 +46,7 @@ export const updateCategory = async (req, res) => {
     }
 }
 
-// Borra una Category por ID
+// Delete a Category by ID
 export const deleteCategory = async (req, res) => {
     try {
         const { id } = req.params

@@ -18,6 +18,4 @@ const model = {
 
 const Sale = connection.define(modelName, model, options)
 
-// await Sale.sync({ alter: true })
-
 export default Sale

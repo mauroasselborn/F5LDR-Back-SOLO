@@ -1,5 +1,6 @@
 import { Brand } from '../database/models/index.js'
-//Listar todos los brands
+
+//List all Brands
 export const getAllBrands = async (_req, res) => {
     try {
         const brans = await Brand.findAll()
@@ -9,7 +10,7 @@ export const getAllBrands = async (_req, res) => {
     }
 }
 
-// Listar un brand por ID
+// List a Brand by ID
 export const getBrand = async (req, res) => {
     try {
         const { id } = req.params
@@ -20,18 +21,19 @@ export const getBrand = async (req, res) => {
     }
 }
 
-// Crea un brand nuevo
+// Create a new Brand
 export const createBrand = async (req, res) => {
     try {
-        // const { name, value, stock, stock_min } = req.body
-        const brand = await Brand.bulkCreate(req.body)
+        const brand = await Brand.create(req.body)
+        //👆🏼 comentar, 👇🏼 descomentar para hacer la poblacion de la tabla "brads" con multiples objetos por "post"
+        // const brand = await Brand.bulkCreate(req.body)
         res.status(201).json({ message: 'Brand Created', Created_Brand: brand })
     } catch (error) {
         res.status(400).json({ message: error.message })
     }
 }
 
-// Actualiza un brand
+// Update a Brand by ID
 export const updateBrand = async (req, res) => {
     try {
         const { id } = req.params
@@ -43,7 +45,7 @@ export const updateBrand = async (req, res) => {
     }
 }
 
-// Borra un brand por ID
+// Delete a Brand by ID
 export const deleteBrand = async (req, res) => {
     try {
         const { id } = req.params

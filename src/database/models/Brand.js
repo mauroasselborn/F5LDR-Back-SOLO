@@ -18,6 +18,4 @@ const model = {
 
 const Brand = connection.define(modelName, model, options)
 
-// await Brand.sync({ alter: true })
-
 export default Brand

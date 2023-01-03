@@ -57,6 +57,4 @@ Product.belongsTo(Category, {
     targetKey: 'id',
 })
 
-// await Product.sync({ alter: true })
-
 export default Product

@@ -18,6 +18,4 @@ const model = {
 
 const Category = connection.define(modelName, model, options)
 
-// await Category.sync({ alter: true })
-
 export default Category

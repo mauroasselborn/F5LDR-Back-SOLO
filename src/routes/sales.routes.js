@@ -7,7 +7,9 @@ const router = Router()
 router.get('/sales', getAllSales)
 router.get('/sale/:id', getSale)
 router.post('/sale', createSale)
-router.put('/sale/:id', updateSale)
-router.delete('/sale/:id', deleteSale)
+
+// Controladores realizados pero actualmente esta funcionalidad no estara disponible ya que para actualizar y borrar se requeriran credenciales
+// router.put('/sale/:id', updateSale)
+// router.delete('/sale/:id', deleteSale)
 
 export default router
