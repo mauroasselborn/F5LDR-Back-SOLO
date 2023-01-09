@@ -1,17 +1,22 @@
 import { Brand } from '../database/models/index.js'
 
 //List all Brands
-export const getAllBrands = async (_req, res) => {
+const getAllBrands = async (_req, res) => {
     try {
         const brans = await Brand.findAll()
-        brans.length ? res.status(200).json(brans) : res.json({ message: 'No Brands' })
+
+        const output = brans.map((brand, index) => {
+            return { id: brand.id, Descripcion: brand.description }
+        })
+
+        brans.length ? res.status(200).json(output) : res.json({ message: 'No Brands' })
     } catch (error) {
         res.status(400).json({ message: error.message })
     }
 }
 
 // List a Brand by ID
-export const getBrand = async (req, res) => {
+const getBrand = async (req, res) => {
     try {
         const { id } = req.params
         const brand = await Brand.findByPk(id)
@@ -22,7 +27,7 @@ export const getBrand = async (req, res) => {
 }
 
 // Create a new Brand
-export const createBrand = async (req, res) => {
+const createBrand = async (req, res) => {
     try {
         const brand = await Brand.create(req.body)
         //👆🏼 comentar, 👇🏼 descomentar para hacer la poblacion de la tabla "brads" con multiples objetos por "post"
@@ -34,7 +39,7 @@ export const createBrand = async (req, res) => {
 }
 
 // Update a Brand by ID
-export const updateBrand = async (req, res) => {
+const updateBrand = async (req, res) => {
     try {
         const { id } = req.params
         const brand = await Brand.findByPk(id)
@@ -46,7 +51,7 @@ export const updateBrand = async (req, res) => {
 }
 
 // Delete a Brand by ID
-export const deleteBrand = async (req, res) => {
+const deleteBrand = async (req, res) => {
     try {
         const { id } = req.params
         const brand = await Brand.destroy({ where: { id } })
@@ -55,3 +60,5 @@ export const deleteBrand = async (req, res) => {
         res.status(400).json({ message: error.message })
     }
 }
+
+export default { getAllBrands, getBrand, createBrand, deleteBrand, updateBrand }

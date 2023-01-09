@@ -1,7 +1,7 @@
 import { Category } from '../database/models/index.js'
 
 //List all Categories
-export const getAllCategories = async (_req, res) => {
+const getAllCategories = async (_req, res) => {
     try {
         const categories = await Category.findAll()
         categories.length ? res.status(200).json(categories) : res.json({ message: 'No Categories' })
@@ -11,7 +11,7 @@ export const getAllCategories = async (_req, res) => {
 }
 
 // List a Category by ID
-export const getCategory = async (req, res) => {
+const getCategory = async (req, res) => {
     try {
         const { id } = req.params
         const category = await Category.findByPk(id)
@@ -22,7 +22,7 @@ export const getCategory = async (req, res) => {
 }
 
 // Create a new Category
-export const createCategory = async (req, res) => {
+const createCategory = async (req, res) => {
     try {
         const category = await Category.create(req.body)
         //👆🏼 comentar, 👇🏼 descomentar para hacer la poblacion de la tabla "categories" con multiples objetos por "post"
@@ -35,7 +35,7 @@ export const createCategory = async (req, res) => {
 }
 
 // Update a Category by ID
-export const updateCategory = async (req, res) => {
+const updateCategory = async (req, res) => {
     try {
         const { id } = req.params
         const category = await Category.findByPk(id)
@@ -47,7 +47,7 @@ export const updateCategory = async (req, res) => {
 }
 
 // Delete a Category by ID
-export const deleteCategory = async (req, res) => {
+const deleteCategory = async (req, res) => {
     try {
         const { id } = req.params
         const category = await Category.destroy({ where: { id } })
@@ -56,3 +56,5 @@ export const deleteCategory = async (req, res) => {
         res.status(400).json({ message: error.message })
     }
 }
+
+export default { getAllCategories, getCategory, createCategory, updateCategory, deleteCategory }

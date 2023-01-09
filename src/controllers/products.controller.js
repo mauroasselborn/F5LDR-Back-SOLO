@@ -1,20 +1,33 @@
 import { Product, Brand, Category } from '../database/models/index.js'
 
 //List all Products
-export const getAllProducts = async (_req, res) => {
+const getAllProducts = async (_req, res) => {
     try {
         const products = await Product.findAll({
             include: [Brand, Category],
         })
 
-        products.length ? res.status(200).json(products) : res.json({ message: 'No Products' })
+        const output = products.map((product) => {
+            return {
+                id: product.id,
+                Descripcion: product.description,
+                Tamaño: product.size,
+                valor: product.value,
+                stock: product.stock,
+                stock_min: product.stock_min,
+                Marca: product.Brand.description,
+                Categoria: product.Category.description,
+            }
+        })
+
+        products.length ? res.status(200).json(output) : res.json({ message: 'No Products' })
     } catch (error) {
         res.status(400).json({ message: error.message })
     }
 }
 
 // List a Product by ID
-export const getProduct = async (req, res) => {
+const getProduct = async (req, res) => {
     try {
         const { id } = req.params
 
@@ -29,7 +42,7 @@ export const getProduct = async (req, res) => {
 }
 
 // Create a new Product
-export const createProduct = async (req, res) => {
+const createProduct = async (req, res) => {
     try {
         const product = await Product.create(req.body)
         //👆🏼 comentar, 👇🏼 descomentar para hacer la poblacion de la tabla "products" con multiples objetos por "post"
@@ -42,7 +55,7 @@ export const createProduct = async (req, res) => {
 }
 
 // Update a Product by ID
-export const updateProduct = async (req, res) => {
+const updateProduct = async (req, res) => {
     try {
         const { id } = req.params
         const product = await Product.findByPk(id)
@@ -55,7 +68,7 @@ export const updateProduct = async (req, res) => {
 }
 
 // Delete a Product by ID
-export const deleteProduct = async (req, res) => {
+const deleteProduct = async (req, res) => {
     try {
         const { id } = req.params
         const product = await Product.destroy({ where: { id } })
@@ -64,3 +77,5 @@ export const deleteProduct = async (req, res) => {
         res.status(400).json({ message: error.message })
     }
 }
+
+export default { getAllProducts, getProduct, createProduct, updateProduct, deleteProduct }

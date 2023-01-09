@@ -1,19 +1,13 @@
 import { Router } from 'express'
-import {
-    getAllCategories,
-    getCategory,
-    createCategory,
-    updateCategory,
-    deleteCategory,
-} from '../controllers/categories.controller.js'
+import controller from '../controllers/categories.controller.js'
 
 const router = Router()
 
 // Peticiones http
-router.get('/categories', getAllCategories)
-router.get('/category/:id', getCategory)
-router.post('/category', createCategory)
-router.put('/category/:id', updateCategory)
-router.delete('/category/:id', deleteCategory)
+router.get('/categories', controller.getAllCategories)
+router.get('/category/:id', controller.getCategory)
+router.post('/category', controller.createCategory)
+router.put('/category/:id', controller.updateCategory)
+router.delete('/category/:id', controller.deleteCategory)
 
 export default router

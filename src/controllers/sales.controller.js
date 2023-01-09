@@ -1,7 +1,7 @@
 import { Sale, Product_Sale } from '../database/models/index.js'
 
 //List all Sales
-export const getAllSales = async (_req, res) => {
+const getAllSales = async (_req, res) => {
     try {
         const sales = await Sale.findAll()
         sales.length ? res.status(200).json(sales) : res.json({ message: 'No Sales' })
@@ -11,7 +11,7 @@ export const getAllSales = async (_req, res) => {
 }
 
 // List a Sale by ID
-export const getSale = async (req, res) => {
+const getSale = async (req, res) => {
     try {
         const { id } = req.params
         const sale = await Sale.findByPk(id)
@@ -22,7 +22,7 @@ export const getSale = async (req, res) => {
 }
 
 // Create a new Sale  SEGUIR ACA 👇🏼
-export const createSale = async (req, res) => {
+const createSale = async (req, res) => {
     try {
         const product_sale = await Product_Sale.bulkCreate(req.body, {
             include: Product_Sale,
@@ -34,7 +34,7 @@ export const createSale = async (req, res) => {
 }
 
 // Update a Sale by ID
-export const updateSale = async (req, res) => {
+const updateSale = async (req, res) => {
     try {
         const { id } = req.params
         const sale = await Sale.findByPk(id)
@@ -46,7 +46,7 @@ export const updateSale = async (req, res) => {
 }
 
 // Delete a Sale by ID
-export const deleteSale = async (req, res) => {
+const deleteSale = async (req, res) => {
     try {
         const { id } = req.params
         const sale = await Sale.destroy({ where: { id } })
@@ -55,3 +55,5 @@ export const deleteSale = async (req, res) => {
         res.status(400).json({ message: error.message })
     }
 }
+
+export default { getAllSales, getSale, updateSale, createSale, deleteSale }
