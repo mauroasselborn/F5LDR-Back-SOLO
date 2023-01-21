@@ -7,18 +7,16 @@ const getAllProducts = async (_req, res) => {
             include: [Brand, Category],
         })
 
-        const output = products.map((product) => {
-            return {
-                id: product.id,
-                Descripcion: product.description,
-                Tamaño: product.size,
-                valor: product.value,
-                stock: product.stock,
-                stock_min: product.stock_min,
-                Marca: product.Brand.description,
-                Categoria: product.Category.description,
-            }
-        })
+        const output = products.map((product) => ({
+            id: product.id,
+            Descripcion: product.description,
+            Tamaño: product.size,
+            valor: product.value,
+            stock: product.stock,
+            stock_min: product.stock_min,
+            Marca: product.Brand.description,
+            Categoria: product.Category.description,
+        }))
 
         products.length ? res.status(200).json(output) : res.json({ message: 'No Products' })
     } catch (error) {
