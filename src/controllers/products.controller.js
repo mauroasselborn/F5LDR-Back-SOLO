@@ -57,7 +57,7 @@ const updateProduct = async (req, res) => {
     try {
         const { id } = req.params
         const product = await Product.findByPk(id)
-        pro.set(req.body).save()
+        product.set(req.body).save()
 
         res.status(202).json({ message: 'Product Updated', product })
     } catch (error) {
