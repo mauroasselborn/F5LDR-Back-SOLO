@@ -9,13 +9,14 @@ const getAllProducts = async (_req, res) => {
 
         const output = products.map((product) => ({
             id: product.id,
-            Descripcion: product.description,
-            Tamaño: product.size,
+            descripcion: product.description,
+            tamaño: product.size,
             valor: product.value,
             stock: product.stock,
             stock_min: product.stock_min,
-            Marca: product.Brand.description,
-            Categoria: product.Category.description,
+            marca: product.Brand.description,
+            categoria: product.Category.description,
+            srcImg: product.srcImg,
         }))
 
         products.length ? res.status(200).json(output) : res.json({ message: 'No Products' })

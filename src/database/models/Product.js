@@ -33,6 +33,10 @@ const model = {
         type: DataTypes.INTEGER,
         defaultValue: 0,
     },
+    srcImg: {
+        type: DataTypes.STRING,
+        defaultValue: 'default.png',
+    },
 }
 
 const Product = connection.define(modelName, model, options)
