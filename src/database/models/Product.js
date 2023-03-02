@@ -33,7 +33,7 @@ const model = {
         type: DataTypes.INTEGER,
         defaultValue: 0,
     },
-    srcImg: {
+    src_img: {
         type: DataTypes.STRING,
         defaultValue: 'default.png',
     },

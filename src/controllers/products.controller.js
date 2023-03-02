@@ -16,7 +16,7 @@ const getAllProducts = async (_req, res) => {
             stock_min: product.stock_min,
             marca: product.Brand.description,
             categoria: product.Category.description,
-            srcImg: product.srcImg,
+            srcImg: product.src_img,
         }))
 
         products.length ? res.status(200).json(output) : res.json({ message: 'No Products' })
